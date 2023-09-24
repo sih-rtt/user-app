@@ -1,0 +1,23 @@
+name: User App CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+
+    - name: Get dependencies
+      run: flutter pub get
+
+    - name: Build and test
+      run: flutter test
